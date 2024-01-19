@@ -1,0 +1,9 @@
+.sesarch-characters {
+  color: white;
+  width: 35%;
+  outline: none;
+  border: 1px solid red;
+  border-radius: 4px;
+  background-color: transparent;
+  height: 50px;
+}

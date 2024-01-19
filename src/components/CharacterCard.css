@@ -1,0 +1,9 @@
+.character-card {
+  color: white;
+  width: 18rem;
+  background-color: rgb(211, 59, 53);
+  height: auto;
+}
+.character-card-image {
+  height: 400px;
+}

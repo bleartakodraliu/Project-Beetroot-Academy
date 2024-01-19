@@ -1,22 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import CharactersCard from "../components/CharacterCard";
+import { useParams } from "react-router";
+import ComicsCard from "../components/ComicsCard";
 import Loader from "../components/Loader";
 import Search from "../components/Search";
 import { CHARACTERS_API_URL, TOKEN } from "../consts";
-import "../pages/Characters.css";
+import "../pages/Comics.css";
 
-const Characters = () => {
+const Comics = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const { id } = useParams();
 
-  const fetchCharacters = async () => {
+  const fetchComics = async () => {
     try {
       setLoading(true);
-      let url = `${CHARACTERS_API_URL}?${TOKEN}`;
+      let url = `${CHARACTERS_API_URL}/${id}/comics?${TOKEN}`;
       if (searchValue) {
-        url = url + `&nameStartsWith=${searchValue}`;
+        url = url + `&titleStartsWith=${searchValue}`;
       }
       const res = await axios.get(url);
       if (res.status === 200) {
@@ -30,7 +32,7 @@ const Characters = () => {
   };
 
   useEffect(() => {
-    fetchCharacters();
+    fetchComics();
   }, [searchValue]);
 
   return (
@@ -38,20 +40,20 @@ const Characters = () => {
       <div className="mt-5">
         <Search
           value={searchValue}
-          placeholder={"Search for characters"}
           onChange={(value) => setSearchValue(value)}
+          placeholder={"Search for comics"}
         ></Search>
       </div>
-      <div className="characters-content container d-flex flex-wrap justify-content-between mt-5 justify-content-sm-center">
+      <div className="comics-content container d-flex flex-wrap justify-content-between mt-5 justify-content-sm-center">
         {loading && <Loader />}
         {!!data &&
           data.map((item) => (
             <div className="col-sm-9 col-md-5 col-lg-3" key={item.id}>
-              <CharactersCard
+              <ComicsCard
                 id={item.id}
                 image={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-                name={item.name}
-              ></CharactersCard>
+                name={item.title}
+              ></ComicsCard>
             </div>
           ))}
       </div>
@@ -59,4 +61,4 @@ const Characters = () => {
   );
 };
 
-export default Characters;
+export default Comics;

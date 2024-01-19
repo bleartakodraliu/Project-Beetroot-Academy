@@ -1,0 +1,10 @@
+.comics-card {
+  color: white;
+  width: 18rem;
+  background-color: rgb(211, 59, 53);
+  height: auto;
+  width: auto;
+}
+.comics-card-image {
+  height: 400px;
+}

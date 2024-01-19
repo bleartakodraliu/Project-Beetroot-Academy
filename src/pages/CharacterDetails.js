@@ -44,6 +44,12 @@ const CharacterDetails = () => {
             <button className="btn btn-success" onClick={() => navigate("/")}>
               Go Back
             </button>
+            <button
+              className="btn btn-success ms-5"
+              onClick={() => navigate(`/characters/${id}/comics/`)}
+            >
+              Go To Comics
+            </button>
           </div>
         </div>
       )}

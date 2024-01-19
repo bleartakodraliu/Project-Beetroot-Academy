@@ -7,7 +7,7 @@ const CharactersCard = ({ name, image, id }) => {
   return (
     <a
       className="card character-card m-2"
-      onClick={() => navigate(`character/${id}`)}
+      onClick={() => navigate(`characters/${id}`)}
     >
       <img
         src={`${image}`}

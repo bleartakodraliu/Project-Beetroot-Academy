@@ -6,9 +6,11 @@ const CharacterDetails = () => {
   const { id } = useParams();
   const [item, setItem] = useState();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
-  const fetch = async () => {
+  const fetchCharacterDetails = async (id) => {
     try {
+      setLoading(true);
       const res = await axios.get(
         `https://gateway.marvel.com/v1/public/comics/${id}?ts=1&apikey=54bc359c27d0ea30d6723af60c41c516&hash=6e68004fea84442155577e14a8fc0f12`
       );
@@ -17,15 +19,18 @@ const CharacterDetails = () => {
       console.log(res.data.data.results[0]);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetch();
+    fetchCharacterDetails(id);
   }, [id]);
 
   return (
-    <div>
+    <div className="d-flex justify-content-center  align-items-center h-100 mt-5">
+      {loading && <div class="spinner-border text-white " role="status"></div>}
       {item && (
         <div className="container mt-5 d-flex">
           <img

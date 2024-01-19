@@ -1,10 +1,12 @@
-import "/Users/blearta/Desktop/Project-Beetroot-Academy/src/components/Search.css";
-const Search = () => {
+import "../components/Search.css";
+const Search = ({ value, onChange }) => {
   return (
     <>
       <input
+        value={value}
         placeholder="Search for charachters"
-        className="sesarch-characters"
+        className="sesarch-characters ms-5 ps-3"
+        onChange={(event) => onChange(event.target.value)}
       ></input>
     </>
   );

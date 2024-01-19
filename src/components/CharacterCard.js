@@ -11,11 +11,11 @@ const CharactersCard = ({ name, image, id }) => {
     >
       <img
         src={`${image}`}
-        class="character-card-image card-img-top"
+        className="character-card-image card-img-top"
         alt="..."
       ></img>
-      <div class="character-card-title card-body">
-        <h6 class="card-title">{name}</h6>
+      <div className="character-card-title card-body">
+        <h6 className="card-title">{name}</h6>
       </div>
     </a>
   );

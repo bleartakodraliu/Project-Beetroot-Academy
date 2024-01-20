@@ -1,19 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import Loader from "../components/Loader";
 import { API_URL, TOKEN } from "../consts";
+import Loader from "./Loader";
 
-const CharacterDetails = () => {
+const ComicDetails = ({ comicId }) => {
   const { id } = useParams();
   const [item, setItem] = useState();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const fetchCharacterDetails = async (id) => {
+  const fetchCharacterDetails = async (id, comicId) => {
     try {
       setLoading(true);
-      const url = `${API_URL}/characters/${id}?${TOKEN}`;
+      const url = `${API_URL}/comics/${comicId}?${TOKEN}`;
       const res = await axios.get(url);
 
       setItem(res.data.data.results[0]);
@@ -25,31 +25,23 @@ const CharacterDetails = () => {
   };
 
   useEffect(() => {
-    fetchCharacterDetails(id);
-  }, [id]);
+    fetchCharacterDetails(id, comicId);
+  }, [id, comicId]);
 
   return (
-    <div className="d-flex justify-content-center  align-items-center h-100 mt-5">
+    <div className="bg-dark">
       {loading && <Loader />}
       {item && (
-        <div className="container mt-5 d-flex">
+        <div className="container mt-5">
           <img
             src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
             alt="Comic Cover"
-            className="col-sm-6 col-md-4 "
+            width={"100%"}
+            height={300}
           />
-          <div className="col-sm-6 p-5">
-            <h3 className="text-white">{item.name}</h3>
+          <div className="p-1">
+            <h3 className="text-white pt-3">{item.title}</h3>
             <h5 className="text-white mt-5">{item.description}</h5>
-            <button className="btn btn-success" onClick={() => navigate("/")}>
-              Go Back
-            </button>
-            <button
-              className="btn btn-success ms-5"
-              onClick={() => navigate(`/characters/${id}/comics/`)}
-            >
-              Go To Comics
-            </button>
           </div>
         </div>
       )}
@@ -57,4 +49,4 @@ const CharacterDetails = () => {
   );
 };
 
-export default CharacterDetails;
+export default ComicDetails;

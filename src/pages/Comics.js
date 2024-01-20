@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import ComicsCard from "../components/ComicsCard";
 import Loader from "../components/Loader";
 import Search from "../components/Search";
-import { CHARACTERS_API_URL, TOKEN } from "../consts";
+import { API_URL, TOKEN } from "../consts";
 import "../pages/Comics.css";
 
 const Comics = () => {
@@ -16,7 +16,7 @@ const Comics = () => {
   const fetchComics = async () => {
     try {
       setLoading(true);
-      let url = `${CHARACTERS_API_URL}/${id}/comics?${TOKEN}`;
+      let url = `${API_URL}/characters/${id}/comics?${TOKEN}`;
       if (searchValue) {
         url = url + `&titleStartsWith=${searchValue}`;
       }

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import CharactersCard from "../components/CharacterCard";
 import Loader from "../components/Loader";
 import Search from "../components/Search";
-import { CHARACTERS_API_URL, TOKEN } from "../consts";
+import { API_URL, TOKEN } from "../consts";
 import "../pages/Characters.css";
 
 const Characters = () => {
@@ -14,7 +14,7 @@ const Characters = () => {
   const fetchCharacters = async () => {
     try {
       setLoading(true);
-      let url = `${CHARACTERS_API_URL}?${TOKEN}`;
+      let url = `${API_URL}/characters?${TOKEN}`;
       if (searchValue) {
         url = url + `&nameStartsWith=${searchValue}`;
       }

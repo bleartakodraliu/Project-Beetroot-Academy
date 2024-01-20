@@ -34,7 +34,7 @@ const Characters = () => {
   }, [fetchCharacters]);
 
   return (
-    <div className="container-fluid h-100">
+    <div className="container h-100">
       <div className="mt-5">
         <Search
           value={searchValue}
@@ -42,7 +42,7 @@ const Characters = () => {
           onChange={(value) => setSearchValue(value)}
         ></Search>
       </div>
-      <div className="characters-content container d-flex flex-wrap justify-content-between mt-5 justify-content-sm-center">
+      <div className="characters-content d-flex flex-wrap justify-content-between mt-5 justify-content-sm-center">
         {loading && <Loader />}
         {!!data &&
           data.map((item) => (

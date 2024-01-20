@@ -6,7 +6,7 @@ const Search = ({ value, onChange, placeholder }) => {
       <input
         value={value}
         placeholder={placeholder}
-        className="search-characters ms-5 ps-3"
+        className="search-characters ps-3 col-md-6 col-sm-12"
         onChange={(event) => onChange(event.target.value)}
       ></input>
     </>

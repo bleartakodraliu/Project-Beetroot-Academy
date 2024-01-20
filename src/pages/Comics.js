@@ -36,7 +36,7 @@ const Comics = () => {
   }, [fetchComics]);
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="mt-5">
         <Search
           value={searchValue}

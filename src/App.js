@@ -6,7 +6,7 @@ import Comics from "./pages/Comics";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={window.location.pathname || ""}>
       <Routes>
         <Route path="/" element={<Characters></Characters>}></Route>
         <Route path="characters/:id" element={<CharacterDetails />} />

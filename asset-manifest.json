@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bleartakodraliu/marvel-comics/static/css/main.c6ac069d.css",
+    "main.js": "/bleartakodraliu/marvel-comics/static/js/main.f76c325f.js",
+    "static/js/787.c032f0c3.chunk.js": "/bleartakodraliu/marvel-comics/static/js/787.c032f0c3.chunk.js",
+    "index.html": "/bleartakodraliu/marvel-comics/index.html",
+    "main.c6ac069d.css.map": "/bleartakodraliu/marvel-comics/static/css/main.c6ac069d.css.map",
+    "main.f76c325f.js.map": "/bleartakodraliu/marvel-comics/static/js/main.f76c325f.js.map",
+    "787.c032f0c3.chunk.js.map": "/bleartakodraliu/marvel-comics/static/js/787.c032f0c3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c6ac069d.css",
+    "static/js/main.f76c325f.js"
+  ]
+}

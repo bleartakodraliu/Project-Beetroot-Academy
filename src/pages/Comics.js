@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ComicsCard from "../components/ComicsCard";
 import Loader from "../components/Loader";
@@ -13,7 +13,7 @@ const Comics = () => {
   const [searchValue, setSearchValue] = useState("");
   const { id } = useParams();
 
-  const fetchComics = async () => {
+  const fetchComics = useCallback(async () => {
     try {
       setLoading(true);
       let url = `${API_URL}/characters/${id}/comics?${TOKEN}`;
@@ -29,11 +29,11 @@ const Comics = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, searchValue]);
 
   useEffect(() => {
     fetchComics();
-  }, [searchValue]);
+  }, [fetchComics]);
 
   return (
     <div className="container-fluid">

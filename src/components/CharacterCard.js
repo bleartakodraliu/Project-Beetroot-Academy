@@ -1,23 +1,21 @@
-import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import "../components/CharacterCard.css";
 
 const CharactersCard = ({ name, image, id }) => {
-  let navigate = useNavigate();
-
   return (
-    <a
-      className="card character-card m-2"
-      onClick={() => navigate(`characters/${id}`)}
-    >
+    <Link className="card character-card m-2" to={`characters/${id}`}>
       <img
         src={`${image}`}
         className="character-card-image card-img-top"
-        alt="..."
+        alt={name}
+        loading="lazy"
+        width={"auto"}
+        height={400}
       ></img>
       <div className="character-card-title card-body">
         <h6 className="card-title">{name}</h6>
       </div>
-    </a>
+    </Link>
   );
 };
 export default CharactersCard;

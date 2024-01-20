@@ -10,7 +10,10 @@ const ComicsCard = ({ name, image, id }) => {
         <img
           src={`${image}`}
           className="comics-card-image card-img-top"
-          alt="..."
+          alt={name}
+          loading="lazy"
+          width={"auto"}
+          height={400}
         ></img>
         <div className="comics-card-title card-body">
           <h6 className="comics-title">{name}</h6>

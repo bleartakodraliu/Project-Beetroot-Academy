@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CharactersCard from "../components/CharacterCard";
 import Loader from "../components/Loader";
 import Search from "../components/Search";
@@ -11,7 +11,7 @@ const Characters = () => {
   const [loading, setLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
-  const fetchCharacters = async () => {
+  const fetchCharacters = useCallback(async () => {
     try {
       setLoading(true);
       let url = `${API_URL}/characters?${TOKEN}`;
@@ -27,14 +27,14 @@ const Characters = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [searchValue]);
 
   useEffect(() => {
     fetchCharacters();
-  }, [searchValue]);
+  }, [fetchCharacters]);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid h-100">
       <div className="mt-5">
         <Search
           value={searchValue}
